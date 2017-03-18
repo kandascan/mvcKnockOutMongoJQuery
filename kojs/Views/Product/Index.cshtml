@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="~/scripts/knockout-3.4.0.js"></script>
+    <script src="~/scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/Style/StyleSheet.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta charset="utf-8" />
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">WebSiteName</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Page 1</a></li>
+                <li><a href="#">Page 2</a></li>
+                <li><a href="#">Page 3</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2">
+                <div class="panel-group">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Add new Product</div>
+                        <div class="panel-body">
+                            <button data-bind='click: addProduct' class="btn btn-info"><span class="ui-icon ui-icon-plus"></span>Add Product</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr class="success">
+                            <th>Name</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Subtotal</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind='foreach: products'>
+                        <tr>
+                            <td>
+                                <input data-bind="value: name"/>
+                            </td>
+                            <td>
+                                <input data-bind="value: quantity" />
+                            </td>
+                            <td>
+                                <input data-bind="value: price" />
+                            </td>
+                            <td>
+                                <span data-bind='text: subtotal'></span>
+                            </td>
+                            <td>
+                                <button data-bind="click: $parent.removeProduct" class="btn btn-danger btn-md"><span class="fa fa-trash-o"></span> Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>Sum</td>
+                            <td>
+                                <span data-bind="text: quantityTotal()"></span>
+                            </td>
+                            <td>
+                                <span data-bind="text: priceTotal()"></span>
+                            </td>
+                            <td>
+                                <span data-bind="text: grandTotal()"></span>
+                            </td>
+                            <td>
+                                All items: <span data-bind="text: products().length" class="label label-default"></span>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="col-sm-2">
+
+            </div>
+        </div>
+        <nav class="navbar navbar-default navbar-fixed-bottom">
+            <div class="container-fluid">
+                <h1>Copyright</h1>
+            </div>
+        </nav>
+    </div>
+    <script src="~/scripts/MyScripts.js"></script>
+</body>
+</html>
